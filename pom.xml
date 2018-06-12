@@ -60,13 +60,6 @@
 			<version>1.6.5</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency> <!-- enables mocking of classes without default constructor (together with 
-				CGLIB) -->
-			<groupId>org.objenesis</groupId>
-			<artifactId>objenesis</artifactId>
-			<version>2.5.1</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency> <!-- only required if Hamcrest matchers are used -->
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
@@ -74,9 +67,28 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<groupId>com.athaydes</groupId>
+			<artifactId>spock-reports</artifactId>
+			<version>1.6.0</version>
+			<scope>test</scope>
+			<!-- this avoids affecting your version of Groovy/Spock -->
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.13</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.13</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -122,7 +134,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
